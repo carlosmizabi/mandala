@@ -33,8 +33,8 @@ impl Valuable for BooleanValue {
 
 #[cfg(test)]
 mod should {
-    use crate::nodes::boolean_node::BooleanValue;
-    use crate::nodes::node::{Node, Valuable};
+    use crate::values::boolean_value::BooleanValue;
+    use crate::nodes::{Node, Nodal, Valuable};
 
     #[test]
     fn return_the_boolean_value() {

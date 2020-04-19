@@ -1,30 +1,27 @@
 use std::collections::HashMap;
-use crate::nodes::{Node, Nodal, Valuable};
+use crate::valuable_node::ValuableNode;
+use crate::node::Node;
 
 pub struct BooleanValue {
-    value: bool,
+    value: Option<bool>,
     node: Node,
 }
 
 impl BooleanValue {
     pub fn new(value: bool, node: Node) -> BooleanValue {
-        BooleanValue { value, node }
+        BooleanValue { value: Some(value), node }
     }
-
     pub fn from_value(value: bool) -> BooleanValue {
-        BooleanValue { value, node: Node::new() }
+        BooleanValue { value: Some(value), node: Node::new() }
     }
 }
 
-impl Nodal for BooleanValue {
+impl ValuableNode for BooleanValue {
+    type Value = Option<bool>;
+
     fn get_node(&self) -> &Node {
         return &self.node;
     }
-}
-
-impl Valuable for BooleanValue {
-    type Value = bool;
-
     fn get_value(&self) -> &Self::Value {
         return &self.value;
     }
@@ -34,7 +31,6 @@ impl Valuable for BooleanValue {
 #[cfg(test)]
 mod should {
     use crate::values::boolean_value::BooleanValue;
-    use crate::nodes::{Node, Nodal, Valuable};
 
     #[test]
     fn return_the_boolean_value() {
@@ -43,7 +39,7 @@ mod should {
             false => BooleanValue::from_value(false)
         };
         for case in cases {
-            assert_eq!(case.0, *case.1.get_value())
+            assert_eq!(case.0, case.1.value.unwrap())
         }
     }
 }

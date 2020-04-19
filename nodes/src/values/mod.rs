@@ -1,3 +1,3 @@
 
 pub mod boolean_value;
-pub mod number_value;
+pub mod float_value;

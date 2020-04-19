@@ -1,11 +1,12 @@
 #[macro_use] extern crate maplit;
 
-pub mod nodes;
+pub mod valuable_node;
 pub mod values;
+pub mod node;
 
 #[cfg(test)]
 mod tests {
-    use crate::nodes::Node;
+    use crate::node::Node;
 
     #[test]
     fn it_works() {

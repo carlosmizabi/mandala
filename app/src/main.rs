@@ -1,10 +1,10 @@
 use std::collections::HashMap;
-use nodes::nodes::{Node, Valuable};
 use nodes::values::boolean_value::BooleanValue;
+use nodes::valuable_node::ValuableNode;
 
 fn main () {
     let n = BooleanValue::from_value(true);
-    println!("Hello World! is it? {}", n.get_value())
+    println!("Hello World! is it? {}", n.get_value().unwrap())
     // let x = BooleanValue::new(
     //     true,
     //     Node {
